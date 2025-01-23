@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Weather.css";
+import "./App.css";
 import { FaSearch } from "react-icons/fa";
 
 const Weather = () => {
