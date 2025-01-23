@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-import { FaSearch } from "react-icons/fa";
 
 const Weather = () => {
   const [search, setSearch] = useState("");
@@ -12,7 +11,7 @@ const Weather = () => {
   const handleSearch = async () => {
     if (!search.trim()) return;
 
-    const API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=895284fb2d2c50a520ea537456963d9c';
+    const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=895284fb2d2c50a520ea537456963d9c`;
 
     try {
       const response = await fetch(API_URL);
@@ -39,7 +38,7 @@ const Weather = () => {
       setWeather(null);
     }
 
-    setSearch(""); 
+    setSearch("");
   };
 
   const convertToFahrenheit = (celsius) => {
@@ -56,7 +55,7 @@ const Weather = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <FaSearch onClick={handleSearch} />
+        <button onClick={handleSearch}>Search</button>
       </div>
 
       {/* Error Message */}
@@ -66,7 +65,7 @@ const Weather = () => {
       {weather && (
         <div>
           <img
-            src={'http://openweathermap.org/img/wn/${weather.weather[0].icon}.png'}
+            src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
             alt="Weather Icon"
             className="weather-icon"
           />
@@ -89,7 +88,6 @@ const Weather = () => {
           </button>
         </div>
       )}
-
 
       {previousSearches.length > 0 && (
         <div className="previous-searches">
